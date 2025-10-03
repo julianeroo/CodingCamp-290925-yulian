@@ -9,8 +9,8 @@
 
 body {
     font-family: Arial, sans-serif;
+    background-color: black;
     background-image: url('/CodingCamp-290925-yulian/blob/main/mountain.png'); 
-    background-color: blue;
     background-size: cover; 
     background-repeat: no-repeat;
     background-attachment: fixed;

@@ -1,0 +1,161 @@
+/* css/style.css */
+
+/* Pengaturan Dasar */
+:root {
+    --bg-color: #212529;
+    --card-bg: #343a40;
+    --text-color: #f8f9fa;
+    --primary-color: #6c757d;
+    --accent-color: #6a5acd; /* Warna ungu */
+    --hover-color: #7f7f84;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 600px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+h1 {
+    color: var(--text-color);
+    font-size: 1.8em;
+}
+
+/* Form Input */
+#todo-form {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+#todo-input, #date-input {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    flex-grow: 1; /* Agar input task mengambil ruang lebih */
+}
+
+#date-input {
+    flex-grow: 0.5;
+}
+
+#todo-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.add-button {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-button:hover {
+    background-color: #5d48c0;
+}
+
+/* Kontrol (Filter dan Delete All) */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.control-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#filter-button {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+#filter-button:hover {
+    background-color: var(--hover-color);
+}
+
+#delete-all-button {
+    background-color: var(--accent-color); /* Sama seperti tombol Add */
+    color: var(--text-color);
+}
+
+#delete-all-button:hover {
+    background-color: #5d48c0;
+}
+
+/* Tabel To-Do List */
+.todo-list-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+thead th {
+    color: var(--text-color);
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+/* Teks saat task kosong */
+.no-task-found {
+    text-align: center;
+    font-style: italic;
+    color: var(--primary-color);
+}
+
+/* Pastikan elemen-elemen ini ada, nanti akan diisi oleh JS */
+.action-buttons button {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.action-buttons button:hover {
+    text-decoration: underline;
+}

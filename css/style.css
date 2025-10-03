@@ -1,161 +1,222 @@
-/* css/style.css */
-
-/* Pengaturan Dasar */
 :root {
     --bg-color: #212529;
     --card-bg: #343a40;
     --text-color: #f8f9fa;
     --primary-color: #6c757d;
-    --accent-color: #6a5acd; /* Warna ungu */
+    --accent-color: #e9ab00; 
     --hover-color: #7f7f84;
 }
 
 body {
     font-family: Arial, sans-serif;
-    background-color: var(--bg-color);
+    background-image: url('/mountain.png'); 
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: var(--text-color);
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    
     min-height: 100vh;
     margin: 0;
+    position: relative; 
+    padding-top: 60px;
+    padding-bottom: 60px; 
 }
 
-.container {
-    background-color: var(--card-bg);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    width: 90%;
-    max-width: 600px;
+
+/* NAVBAR */
+.navbar {
+    width: 100%;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5); 
+    
+    display: flex;
+    
+    justify-content: space-between; 
+    align-items: center;
+    
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    right: 0; 
+    z-index: 20;
 }
 
-/* Header */
-header {
-    text-align: center;
+.nav-logo {
+    color: var(--accent-color); 
+    font-size: 1.5em;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* STYLING GAMBAR LOGO GITHUB */
+.github-logo-img {
+    width: 40px; 
+    padding-right: 50px; 
+    height: auto; 
+    vertical-align: middle; 
+    transition: transform 0.3s ease; 
+}
+
+.github-icon:hover .github-logo-img {
+    transform: scale(1.1); 
+}
+
+
+
+/* TATA LETAK 2 KOLOM (main-layout) */
+.main-layout {
+    display: flex; 
+    gap: 40px; 
+    width: 90%; 
+    max-width: 1200px; 
+    align-items: flex-start; 
+    padding: 20px;
+    
+
+    margin-top: auto; 
+    margin-bottom: auto; 
+    
+    flex-grow: 0; 
+}
+
+.left-panel {
+    flex: 1; 
+    padding-top: 0; 
+}
+
+.left-panel header {
+    text-align: left; 
     margin-bottom: 25px;
 }
 
-h1 {
-    color: var(--text-color);
-    font-size: 1.8em;
+.description-text {
+    text-align: justify; 
+    line-height: 1.6;
+    font-family: sans-serif; 
+    margin-top: 20px;
 }
+
+/* Kolom Kanan: Container To-Do List */
+.container {
+    background-color: rgba(0, 0, 0, 0.712);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 15px rgba(173, 142, 0, 0.1);
+    border: 1px solid rgba(173, 142, 0, 0.3);
+    flex: 1;
+    max-width: 600px; 
+}
+
+/* Header & Judul */
+h1 {
+    font-family: Arial, sans-serif; 
+    color: var(--text-color);
+    font-size: 2.5em; 
+}
+
 
 /* Form Input */
-#todo-form {
-    margin-bottom: 20px;
+#todo-form { 
+    margin-bottom: 20px; 
+    border-bottom: 1px solid var(--primary-color); 
+    padding-bottom: 20px;
 }
-
-.input-group {
-    display: flex;
-    gap: 10px;
+.input-group { 
+    display: flex; 
+    gap: 10px; 
+    align-items: center;
 }
-
 #todo-input, #date-input {
-    padding: 10px;
-    border: none;
-    border-radius: 6px;
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    flex-grow: 1; /* Agar input task mengambil ruang lebih */
+    padding: 12px; 
+    border: 1px solid var(--primary-color); 
+    border-radius: 8px; 
+    background-color: #495057; 
+    color: var(--text-color); 
+    flex-grow: 1;
+    transition: all 0.2s;
+}
+#todo-input:focus, #date-input:focus {
+    border-color: var(--accent-color); 
+    outline: none;
 }
 
-#date-input {
-    flex-grow: 0.5;
-}
-
-#todo-input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-}
+#date-input { flex-grow: 0.5; }
+#todo-input::placeholder { color: rgba(255, 255, 255, 0.7); }
 
 .add-button {
-    background-color: var(--accent-color);
-    color: var(--text-color);
+    background-color: var(--accent-color); 
+    color: var(--text-color); 
     border: none;
-    border-radius: 6px;
-    padding: 10px 20px;
-    font-size: 1.5em;
-    cursor: pointer;
+    border-radius: 8px; 
+    padding: 12px 20px; 
+    font-size: 1.2em; 
+    cursor: pointer; 
     transition: background-color 0.3s;
 }
-
-.add-button:hover {
-    background-color: #5d48c0;
-}
+.add-button:hover { background-color: #7a6506; }
 
 /* Kontrol (Filter dan Delete All) */
-.controls {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
+.controls { display: flex; justify-content: space-between; margin-bottom: 20px; }
 .control-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    padding: 10px 15px; border: none; border-radius: 6px;
+    font-weight: bold; cursor: pointer; transition: background-color 0.3s;
 }
-
-#filter-button {
-    background-color: var(--primary-color);
-    color: var(--text-color);
-}
-
-#filter-button:hover {
-    background-color: var(--hover-color);
-}
-
-#delete-all-button {
-    background-color: var(--accent-color); /* Sama seperti tombol Add */
-    color: var(--text-color);
-}
-
-#delete-all-button:hover {
-    background-color: #5d48c0;
-}
+#filter-button { background-color: var(--primary-color); color: var(--text-color); }
+#filter-button:hover { background-color: var(--hover-color); }
+#delete-all-button { background-color: var(--accent-color); color: var(--text-color); }
+#delete-all-button:hover { background-color: #7a6506; }
 
 /* Tabel To-Do List */
-.todo-list-container {
-    width: 100%;
-    overflow-x: auto;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-}
-
-th, td {
-    padding: 12px;
-    border-bottom: 1px solid var(--primary-color);
-}
-
-thead th {
-    color: var(--text-color);
-    font-size: 0.9em;
-    text-transform: uppercase;
-}
-
-/* Teks saat task kosong */
-.no-task-found {
-    text-align: center;
-    font-style: italic;
-    color: var(--primary-color);
-}
-
-/* Pastikan elemen-elemen ini ada, nanti akan diisi oleh JS */
+.todo-list-container { width: 100%; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th, td { padding: 12px; border-bottom: 1px solid var(--primary-color); }
+thead th { color: var(--text-color); font-size: 0.9em; text-transform: uppercase; }
+.no-task-found { text-align: center; font-style: italic; color: var(--primary-color); }
 .action-buttons button {
-    background: none;
-    border: none;
-    color: var(--accent-color);
-    cursor: pointer;
-    margin-right: 5px;
+    background: none; border: none; color: var(--accent-color);
+    cursor: pointer; margin-right: 5px;
+}
+.action-buttons button:hover { text-decoration: underline; }
+
+
+/* Running Text di Bawah */
+.running-text-container {
+ 
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    
+    background-color: rgba(0, 0, 0, 0.288); 
+    color: var(--text-color);
+
+    
+    overflow: hidden; 
+    white-space: nowrap; 
+    padding: 10px 0;
+    box-sizing: border-box;
+    z-index: 10;
 }
 
-.action-buttons button:hover {
-    text-decoration: underline;
+.marquee-content {
+    display: inline-block;
+    font-size: 40px;
+    font-weight: bold;
+    animation: marquee-scroll 15s linear infinite; 
+    padding-left: 100%; 
+}
+
+/* Keyframes untuk animasi pergerakan teks */
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%); 
+    }
 }

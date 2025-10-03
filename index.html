@@ -5,44 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple To-Do List</title>
     <link rel="stylesheet" href="css/style.css">
-</head>
+    </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Todo List</h1>
-        </header>
-
-        <form id="todo-form">
-            <div class="input-group">
-                <input type="text" id="todo-input" placeholder="Add a todo ..." required>
-                <input type="date" id="date-input" required>
-                <button type="submit" class="add-button">+</button>
-            </div>
-        </form>
-
-        <div class="controls">
-            <button id="filter-button" class="control-button filter">FILTER</button>
-            <button id="delete-all-button" class="control-button delete-all">DELETE ALL</button>
+    
+    <nav class="navbar">
+        <div class="nav-logo">RevoU Mini-Course</div> 
+        <div class="nav-icons">
+            <a href="URL_GITHUB_ANDA" target="_blank" class="github-icon">
+                <img src="github.png" alt="GitHub Logo" class="github-logo-img"> 
+            </a>
+        </div>
+    </nav>
+    <div class="main-layout">
+        
+        <div class="left-panel">
+            <header>
+                <h1>Todo List</h1>
+                <p class="description-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </header>
         </div>
 
-        <div class="todo-list-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>TASK</th>
-                        <th>DUE DATE</th>
-                        <th>STATUS</th>
-                        <th>ACTIONS</th>
-                    </tr>
-                </thead>
-                <tbody id="todo-table-body">
-                    <tr>
-                        <td colspan="4" class="no-task-found">No task found</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="container">
+            <form id="todo-form">
+                <div class="input-group">
+                    <input type="text" id="todo-input" placeholder="Add a todo ..." required>
+                    <input type="date" id="date-input" required>
+                    <button type="submit" class="add-button">+</button>
+                </div>
+            </form>
+
+            <div class="controls">
+                <button id="filter-button" class="control-button filter">FILTER</button>
+                <button id="delete-all-button" class="control-button delete-all">DELETE ALL</button>
+            </div>
+
+            <div class="todo-list-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>TASK</th>
+                            <th>DUE DATE</th>
+                            <th>STATUS</th>
+                            <th>ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="todo-table-body">
+                        <tr>
+                            <td colspan="4" class="no-task-found">No task found</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="running-text-container">
+        <div class="marquee-content">
+            MAKASI KAKAK REVOU UDAH NGASIH ILMUNYA :) SEMOGA SEHAT SELALU BUAT KAKAK REVOU DAN TIM REVOU
         </div>
     </div>
+
 
     <script src="js/script.js"></script>
 </body>

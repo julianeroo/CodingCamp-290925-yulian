@@ -1,6 +1,3 @@
-// js/script.js
-
-// 1. Ambil Elemen DOM yang Dibutuhkan
 const todoForm = document.getElementById('todo-form');
 const todoInput = document.getElementById('todo-input');
 const dateInput = document.getElementById('date-input');
@@ -17,11 +14,10 @@ const saveTodos = () => {
     localStorage.setItem('todos', JSON.stringify(todos));
 };
 
-// Fungsi untuk Menampilkan To-Do List (Fitur Wajib: Display To-Do List)
+// Fungsi untuk Menampilkan To-Do List 
 const renderTodos = () => {
-    todoTableBody.innerHTML = ''; // Kosongkan tabel terlebih dahulu
+    todoTableBody.innerHTML = '';
 
-    // Logika Filtering
     const filteredTodos = todos.filter(todo => {
         if (filterMode === 'ALL') return true;
         if (filterMode === 'COMPLETED') return todo.status === 'Completed';
@@ -30,7 +26,6 @@ const renderTodos = () => {
     });
 
     if (filteredTodos.length === 0) {
-        // Tampilkan pesan 'No task found'
         const row = todoTableBody.insertRow();
         row.innerHTML = `<td colspan="4" class="no-task-found">No task found</td>`;
         return;
@@ -39,7 +34,7 @@ const renderTodos = () => {
     // Loop untuk menampilkan setiap task
     filteredTodos.forEach((todo, index) => {
         const row = todoTableBody.insertRow();
-        row.classList.add(todo.status.toLowerCase()); // Tambahkan class untuk styling
+        row.classList.add(todo.status.toLowerCase());
 
         // Kolom TASK
         const taskCell = row.insertCell();
@@ -52,13 +47,13 @@ const renderTodos = () => {
         // Kolom STATUS
         const statusCell = row.insertCell();
         statusCell.textContent = todo.status;
-        statusCell.style.color = todo.status === 'Completed' ? '#38c172' : '#f6993f'; // Warna status
+        statusCell.style.color = todo.status === 'Completed' ? '#38c172' : '#f6993f';
 
-        // Kolom ACTIONS (Fitur Wajib: Add/Delete/Filter - implementasi Delete per item di sini)
+        // Kolom ACTIONS
         const actionsCell = row.insertCell();
         actionsCell.classList.add('action-buttons');
         
-        // Tombol Toggle Status (Tandai Selesai/Belum)
+        // Tombol Toggle Status
         const statusButton = document.createElement('button');
         statusButton.textContent = todo.status === 'Pending' ? 'Mark Done' : 'Undo Done';
         statusButton.onclick = () => toggleStatus(todo.id);
@@ -66,7 +61,7 @@ const renderTodos = () => {
         // Tombol Delete Task
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
-        deleteButton.style.color = '#dc3545'; // Warna merah untuk Delete
+        deleteButton.style.color = '#dc3545';
         deleteButton.onclick = () => deleteTodo(todo.id);
 
         actionsCell.appendChild(statusButton);
@@ -74,13 +69,12 @@ const renderTodos = () => {
     });
 };
 
-// Fungsi untuk Validasi Input Form (Fitur Wajib)
+// Fungsi untuk Validasi Input Form
 const validateInput = (task, date) => {
     if (task.trim() === '') {
         alert('Task description cannot be empty!');
         return false;
     }
-    // Validasi Tanggal: pastikan tanggal tidak kurang dari hari ini
     const today = new Date().toISOString().split('T')[0];
     if (date < today) {
         alert('Due date cannot be in the past!');
@@ -89,31 +83,27 @@ const validateInput = (task, date) => {
     return true;
 };
 
-// Fungsi untuk Menambah To-Do (Fitur Wajib: Add)
+// Fungsi untuk Menambah To-Do
 const addTodo = (e) => {
     e.preventDefault();
 
     const task = todoInput.value.trim();
     const dueDate = dateInput.value;
 
-    // Lakukan Validasi
     if (!validateInput(task, dueDate)) {
         return;
     }
 
-    // Buat objek To-Do baru
     const newTodo = {
-        id: Date.now(), // ID unik
+        id: Date.now(), 
         task,
         dueDate,
-        status: 'Pending' // Status default
+        status: 'Pending'
     };
 
-    // Tambahkan ke array dan simpan
     todos.push(newTodo);
     saveTodos();
 
-    // Reset formulir dan update tampilan
     todoInput.value = '';
     dateInput.value = '';
     renderTodos();
@@ -138,7 +128,7 @@ const toggleStatus = (id) => {
     renderTodos();
 };
 
-// Fungsi untuk Menghapus Semua To-Do (Fitur Wajib: Delete)
+// Fungsi untuk Menghapus Semua To-Do
 const deleteAllTodos = () => {
     if (todos.length === 0) {
         alert("There are no tasks to delete.");
@@ -151,7 +141,7 @@ const deleteAllTodos = () => {
     }
 };
 
-// Fungsi untuk Mengubah Mode Filter (Fitur Wajib: Filter)
+// Fungsi untuk Mengubah Mode Filter
 const toggleFilter = () => {
     if (filterMode === 'ALL') {
         filterMode = 'PENDING';
@@ -161,15 +151,11 @@ const toggleFilter = () => {
         filterButton.textContent = 'COMPLETED';
     } else {
         filterMode = 'ALL';
-        filterButton.textContent = 'FILTER'; // Kembali ke default
+        filterButton.textContent = 'FILTER';
     }
     renderTodos();
 };
-
-// 2. Event Listeners
 todoForm.addEventListener('submit', addTodo);
 deleteAllButton.addEventListener('click', deleteAllTodos);
 filterButton.addEventListener('click', toggleFilter);
-
-// 3. Muat data saat halaman dimuat
 document.addEventListener('DOMContentLoaded', renderTodos);
